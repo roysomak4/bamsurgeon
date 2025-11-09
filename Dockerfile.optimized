@@ -57,7 +57,9 @@ RUN python3 -m venv /build/venv \
     && /build/venv/bin/pip install --no-cache-dir pysam
 
 # Clone bamsurgeon source
-RUN git clone --depth 1 https://github.com/roysomak4/bamsurgeon.git /build/bamsurgeon
+RUN git clone https://github.com/roysomak4/bamsurgeon.git /build/bamsurgeon && \
+    cd /build/bamsurgeon && \
+    rm -rf .git .dockerignore README.md LICENSE.txt Dockerfile* .gitignore .travis.yml doc test_data
 
 # Final runtime image
 FROM ubuntu:24.04
