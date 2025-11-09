@@ -103,8 +103,8 @@ ENV PATH="/opt/venv/bin:/opt/bamsurgeon/bin:$PATH" \
     VIRTUAL_ENV="/opt/venv"
 
 # Create working directory and set permissions
-RUN mkdir -p /data /home/bamsurgeon \
-    && chown -R bamsurgeon:bamsurgeon /home/bamsurgeon /data /opt/bamsurgeon /opt/venv
+RUN mkdir -p /data /assets /home/bamsurgeon \
+    && chown -R bamsurgeon:bamsurgeon /home/bamsurgeon /data /assets /opt/bamsurgeon /opt/venv
 
 # Switch to non-root user
 USER bamsurgeon
