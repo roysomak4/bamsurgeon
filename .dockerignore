@@ -1,0 +1,32 @@
+# Ignore version control
+.git
+.gitignore
+
+# Ignore documentation
+doc/
+README.md
+
+# Ignore test data (large files)
+test_data/
+
+# Ignore temporary files
+*.tmp
+*.log
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+*.so
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
