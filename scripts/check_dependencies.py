@@ -13,17 +13,12 @@ def check_java():
     return False
 
 def check_bwa():
-    p = subprocess.Popen(['bwa'], stderr=subprocess.PIPE)
+    p = subprocess.Popen(['bwa-mem2', 'mem'], stderr=subprocess.PIPE)
     for line in p.stderr:
         line = line.decode()
 
-        if line.startswith('Version:'):
-            major, minor, sub = line.strip().split()[1].split('.')
-            sub = sub.split('-')[0]
-            digit_pattern = re.compile(r'\D')
-            sub = list(filter(None, digit_pattern.split(sub)))[0]
-            if int(major) >= 0 and int(minor) >= 7 and int(sub) >= 12:
-                return True
+        if line.startswith('Usage:'):
+            return True
     return False
 
 
@@ -85,7 +80,7 @@ def check_python():
 
 if __name__ == '__main__':
     if not check_python(): sys.exit('Dependency problem: python >= 3.6 is required')
-    if not check_bwa(): sys.exit('Dependency problem: bwa >= 0.7.12 not found')
+    if not check_bwa(): sys.exit('Dependency problem: bwa-mem2 not found')
     if not check_samtools(): sys.exit('Dependency problem: samtools >= 1.2 not found')
     if not check_wgsim(): sys.exit('Dependency problem: wgsim not found (required for addsv)')
     if not check_velvet(): sys.exit('Dependency problem: velvet >= 1.2 not found (required for addsv)')

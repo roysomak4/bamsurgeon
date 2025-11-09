@@ -126,9 +126,9 @@ def _run_backtrack(fq1, fastaref, sam_out, fq2=None, threads=1):
 
 def _run_bwa_mem(fq1, fastaref, sam_out, fq2=None, threads=1):
     if fq2 is None:
-        sam_cmd = ['bwa', 'mem', '-t', str(threads), '-M', '-Y', fastaref, fq1]
+        sam_cmd = ['bwa-mem2', 'mem', '-t', str(threads), '-M', '-Y', fastaref, fq1]
     else:
-        sam_cmd = ['bwa', 'mem', '-t', str(threads), '-M', '-Y', fastaref, fq1, fq2]
+        sam_cmd = ['bwa-mem2', 'mem', '-t', str(threads), '-M', '-Y', fastaref, fq1, fq2]
     with open(sam_out, 'w') as sam:
         subprocess.check_call(sam_cmd, stdout=sam)
 
